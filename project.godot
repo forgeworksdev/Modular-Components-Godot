@@ -15,9 +15,22 @@ run/main_scene="res://files/world.scn"
 config/features=PackedStringArray("4.4")
 config/icon="res://files/icon.svg"
 
+[display]
+
+window/size/viewport_width=648
+window/size/always_on_top=true
+
+[editor]
+
+naming/script_name_casing=2
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/script-dock/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+
+[global_group]
+
+player=""
 
 [input]
 
@@ -61,5 +74,6 @@ ui_down={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
