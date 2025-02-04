@@ -8,12 +8,18 @@ These are
 - ✅ Feature 2  
 - ✅ Feature 3  
 
+---
+
 ### 📷 Screenshots  
+
+---
 
 ## 🔧 Installation & Setup  
 No executables will be provided, since these are to be interacted with from within the editor.
 
 You can run the project by cloning the repo and importing the project into Godot.
+
+---
 
 ### 📥 Cloning the Repository  
 ```sh
