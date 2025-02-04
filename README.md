@@ -4,8 +4,8 @@
 These are
 
 ### Components:
-- ✅ Feature 1  
-- ✅ Feature 2  
+- ✅ state_comp (node-based state machine)
+- ✅ health_comp (health manager for player characters)
 - ✅ Feature 3  
 
 ---
@@ -52,6 +52,6 @@ cd project-name
 ---
 
 ## 📝 License  
-This project is licensed under the **License** – see the [LICENSE](LICENSE) file for details.  
+This project is licensed under the **CC BY 4.0 License** (Creative Commons Attribution) – see the [LICENSE](LICENSE) file for details.  
 
 ---
