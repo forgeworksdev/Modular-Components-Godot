@@ -5,8 +5,8 @@ var control := MarginContainer.new()
 var panel: Control
 var default_parent: Control
 
-
 var script_editor :ScriptEditor = null
+
 func _enter_tree():
 	script_editor = EditorInterface.get_script_editor()
 	script_editor.editor_script_changed.connect(script_visibility_changed)
