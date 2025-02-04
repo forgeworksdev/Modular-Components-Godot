@@ -4,9 +4,9 @@
 These are
 
 ### Components:
-- ✅ state_comp (node-based state machine)
+- ✅ state_comp (node-based state machine for NPCs)
 - ✅ health_comp (health manager for player characters)
-- ✅ Feature 3  
+- ✅ drag_comp (makes objects draggable)
 
 ---
 
@@ -23,12 +23,12 @@ You can run the project by cloning the repo and importing the project into Godot
 
 ### 📥 Cloning the Repository  
 ```sh
-git clone https://github.com/yourusername/project-name.git
-cd project-name
+git clone https://github.com/Max9th/Modular-Template-tests-godot.git
+cd Modular-Template-tests-godot
 ```
 
 ### 🎮 Running the Project in Godot  
-1. Open **Godot 4.3+**  
+1. Open **Godot v4.4 beta2**  
 2. Click **Import Project**  
 3. Select the `project.godot` file in the repository  
 4. Click **Run**  
@@ -36,7 +36,7 @@ cd project-name
 ---
 
 ## 🛠️ Technologies Used  
-- 🖥️ **Godot 4.3** (Engine)  
+- 🖥️ **Godot 4.4** (Engine)  
 - 🎨 **GDScript** (Scripting)  
 - 📦 **(Any dependencies used, e.g., Godot addons, GDNative, etc.)**  
 
