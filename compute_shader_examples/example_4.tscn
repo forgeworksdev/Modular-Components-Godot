@@ -1,15 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmucgsppcoo5e"]
+[gd_scene load_steps=3 format=3 uid="uid://b2ip5eftk3aij"]
 
-[ext_resource type="Script" path="res://addons/compute_shader_studio/compute_shader_studio_2d.gd" id="1_eimw3"]
-[ext_resource type="Script" path="res://examples/LabelStepPass.gd" id="2_4aq4t"]
-[ext_resource type="Texture2D" uid="uid://demftcowdd5c6" path="res://examples/icon.svg" id="2_4upxj"]
+[ext_resource type="Script" uid="uid://boyneisgbw2c7" path="res://addons/compute_shader_studio/compute_shader_studio_2d.gd" id="1_ke3fj"]
+[ext_resource type="Texture2D" uid="uid://2behgeplwycn" path="res://compute_shader_examples/grid_512x512.png" id="2_flqlh"]
 
-[node name="CompShadStudioEx3" type="Node2D"]
+[node name="CompShadStudioEx4" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 0.999908
+offset_top = 1.0
+offset_right = 232.0
+offset_bottom = 60.0
+scale = Vector2(1.72, 1.72)
+text = "Compute Shader Studio
+Example 4: BIG Game Of Life"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ComputeShaderStudio2D2" type="Node" parent="." node_paths=PackedStringArray("data")]
-script = ExtResource("1_eimw3")
+script = ExtResource("1_ke3fj")
 pause = true
 nb_passes = 2
+WSX = 512
+WSY = 512
 GLSL_code = "// Write your code HERE
 #define ALIVE 0xFFFFFFFF
 #define DEAD 0xFF0000FF
@@ -58,54 +70,28 @@ void main() {
 	}
 }
 "
-data = [NodePath("../Matrix1"), NodePath("../Matrix2")]
-
-[node name="LabelTitle" type="Label" parent="."]
-offset_left = 56.0
-offset_top = 3.0
-offset_right = 655.0
-offset_bottom = 38.0
-scale = Vector2(1.72, 1.72)
-text = "Compute Shader Studio - Example 3: Game Of Life"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LabelStepPass" type="Label" parent="."]
-offset_left = 56.0
-offset_top = 56.0
-offset_right = 659.0
-offset_bottom = 91.0
-scale = Vector2(1.72, 1.72)
-text = "step=0    current_pass=0"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("2_4aq4t")
-
-[node name="Matrix1" type="Sprite2D" parent="."]
-position = Vector2(294, 315)
-scale = Vector2(3.27344, 3.02344)
-texture = ExtResource("2_4upxj")
-
-[node name="Matrix2" type="Sprite2D" parent="."]
-position = Vector2(843, 317)
-scale = Vector2(3.27344, 3.02344)
-texture = ExtResource("2_4upxj")
+data = [NodePath("../Grid512x512_0"), null]
 
 [node name="ButtonStep" type="Button" parent="."]
-offset_left = 348.0
-offset_top = 540.0
-offset_right = 439.0
-offset_bottom = 571.0
+offset_left = 91.0
+offset_top = 131.0
+offset_right = 182.0
+offset_bottom = 162.0
 scale = Vector2(2.4, 2.4)
 text = "Step"
 
 [node name="ButtonPlay" type="Button" parent="."]
-offset_left = 587.0
-offset_top = 541.0
-offset_right = 678.0
-offset_bottom = 572.0
+offset_left = 92.0
+offset_top = 219.0
+offset_right = 183.0
+offset_bottom = 250.0
 scale = Vector2(2.4, 2.4)
 text = "Play"
+
+[node name="Grid512x512_0" type="Sprite2D" parent="."]
+position = Vector2(762.7, 314.7)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_flqlh")
 
 [connection signal="pressed" from="ButtonStep" to="ComputeShaderStudio2D2" method="_on_button_step"]
 [connection signal="pressed" from="ButtonPlay" to="ComputeShaderStudio2D2" method="_on_button_play"]

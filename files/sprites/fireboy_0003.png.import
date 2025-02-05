@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2behgeplwycn"
-path="res://.godot/imported/grid_512x512.png-2c8cc3aa508910332e4c1a499b7f5cbb.ctex"
+uid="uid://eegd1lwrpb44"
+path="res://.godot/imported/fireboy_0003.png-e5107ed3b557f7cba42664409f65969e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://examples/grid_512x512.png"
-dest_files=["res://.godot/imported/grid_512x512.png-2c8cc3aa508910332e4c1a499b7f5cbb.ctex"]
+source_file="res://files/sprites/fireboy_0003.png"
+dest_files=["res://.godot/imported/fireboy_0003.png-e5107ed3b557f7cba42664409f65969e.ctex"]
 
 [params]
 

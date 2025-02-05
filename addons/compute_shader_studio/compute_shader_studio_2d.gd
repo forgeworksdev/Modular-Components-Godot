@@ -96,7 +96,7 @@ func compile():
 		set_process(false)
 		printerr("Compute shaders are not available")
 		return
-		
+
 	# *********************
 	# *  SHADER CREATION  *
 	# *********************
@@ -124,25 +124,25 @@ layout(binding = """+str(i+2)+""") buffer Data"""+str(i)+""" {
 	var GLSL_all : String = GLSL_header + GLSL_code
 	if print_generated_code == true:
 		print(GLSL_all)
-	
+
 	# Compile the shader by passing a string
 	var shader_src := RDShaderSource.new()
 	shader_src.set_stage_source(RenderingDevice.SHADER_STAGE_COMPUTE, GLSL_all)
 	var shader_spirv := rd.shader_compile_spirv_from_source(shader_src)
-	
+
 	var err:String=shader_spirv.compile_error_compute
-	
+
 	if err != "":
 		printerr(err)
 		get_tree().quit()
-	
+
 	shader = rd.shader_create_from_spirv(shader_spirv)
 
 
 	# *********************
 	# *  BUFFERS CREATION *
 	# *********************
-	
+
 	# Buffer for current_pass
 	var input_params :PackedInt32Array = PackedInt32Array()
 	input_params.append(step)
@@ -150,7 +150,7 @@ layout(binding = """+str(i+2)+""") buffer Data"""+str(i)+""" {
 	var input_params_bytes := input_params.to_byte_array()
 	buffer_params = rd.storage_buffer_create(input_params_bytes.size(), input_params_bytes)
 	buffer_user   = rd.storage_buffer_create(uniform_user_data.size(), uniform_user_data)
-	
+
 	# Creation of nb_buffers Buffers of type Int32
 	for b in nb_buffers:
 		var input :PackedInt32Array = PackedInt32Array()
@@ -169,13 +169,13 @@ layout(binding = """+str(i+2)+""") buffer Data"""+str(i)+""" {
 	uniform_params.uniform_type = RenderingDevice.UNIFORM_TYPE_STORAGE_BUFFER
 	uniform_params.binding = 0 # this needs to match the "binding" in our shader file
 	uniform_params.add_id(buffer_params)
-	
+
 	# Create current_pass uniform pass
 	uniform_user = RDUniform.new()
 	uniform_user.uniform_type = RenderingDevice.UNIFORM_TYPE_STORAGE_BUFFER
 	uniform_user.binding = 1 # this needs to match the "binding" in our shader file
 	uniform_user.add_id(buffer_user)
-	
+
 	var nb_uniforms : int = data.size()
 	for b in nb_uniforms:
 		var uniform = RDUniform.new()
@@ -188,7 +188,7 @@ layout(binding = """+str(i+2)+""") buffer Data"""+str(i)+""" {
 	bindings = [uniform_params, uniform_user]
 	for b in nb_buffers:
 		bindings.append(uniforms[b])
-	
+
 	uniform_set = rd.uniform_set_create(bindings, shader, 0) # the last parameter (the 0) needs to match the "set" in our shader file
 
 	# **************************
@@ -196,7 +196,7 @@ layout(binding = """+str(i+2)+""") buffer Data"""+str(i)+""" {
 	# **************************
 	# Create a compute pipeline
 	pipeline = rd.compute_pipeline_create(shader)
-	
+
 #endregion
 
 func load_glsl_file(file_name:String) -> String:
@@ -217,7 +217,7 @@ func display_all_values():
 func display_values(disp : Node, values : PackedByteArray): # PackedInt32Array):
 	var img : Image = Image.create_from_data(WSX, WSY, false, Image.FORMAT_RGBA8, values)
 	var tex : Texture2D = ImageTexture.create_from_image(img)
-	
+
 	if disp is Sprite2D :
 		var old_width  : float = disp.texture.get_width()
 		var old_height : float = disp.texture.get_height()
@@ -235,9 +235,9 @@ func compute():
 		print("Step="+str(step))
 	if print_passes == true:
 		print(" CurrentPass="+str(current_pass))
-	
+
 	_update_uniforms()
-	
+
 	# Prepare the Computer List ############################################
 	var compute_list : int = rd.compute_list_begin()
 	rd.compute_list_bind_compute_pipeline(compute_list, pipeline)
@@ -249,7 +249,7 @@ func compute():
 	# Submit to GPU and wait for sync
 	rd.submit()
 	rd.sync()
-	
+
 	# Update step and current_passe
 	current_pass = (current_pass + 1) % nb_passes
 	if current_pass == 0:
@@ -263,14 +263,14 @@ func _process(_delta):
 ## Pass the interesting values from CPU to GPU
 func _update_uniforms():
 	var input_params : PackedInt32Array = PackedInt32Array()
-	
+
 	input_params.append(step)
 	input_params.append(current_pass)
 
 	var pos : Vector2 = screen_to_data0(get_viewport().get_mouse_position())
 	input_params.append(pos.x)
 	input_params.append(pos.y)
-	
+
 	var input_params_bytes := input_params.to_byte_array()
 	buffer_params = rd.storage_buffer_create(input_params_bytes.size(), input_params_bytes)
 	uniform_params = RDUniform.new()
@@ -285,7 +285,7 @@ func _update_uniforms():
 	uniform_user.binding = 1 # this needs to match the "binding" in our shader file
 	uniform_user.add_id(buffer_user)
 	bindings[1] = uniform_user
-	
+
 	uniform_set = rd.uniform_set_create(bindings, shader, 0)
 	# Note: when changing the uniform set, use the same bindings Array (do not create a new Array)
 
@@ -294,7 +294,7 @@ func _notification(what):
 	# Object destructor, triggered before the engine deletes this Node.
 	if what == NOTIFICATION_PREDELETE:
 		cleanup_gpu()
-		
+
 func cleanup_gpu():
 	if rd == null:
 		return

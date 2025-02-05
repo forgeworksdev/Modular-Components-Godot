@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkq0nsu8agj8d"
-path="res://.godot/imported/icon.svg-3c0bb7c18bff660b714821676be02670.ctex"
+uid="uid://cj3dvjb5be6b5"
+path="res://.godot/imported/fireboy_0004.png-91bb66ece9bdb1e58ec0010f77327ec3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://files/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-3c0bb7c18bff660b714821676be02670.ctex"]
+source_file="res://files/sprites/fireboy_0004.png"
+dest_files=["res://.godot/imported/fireboy_0004.png-91bb66ece9bdb1e58ec0010f77327ec3.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
