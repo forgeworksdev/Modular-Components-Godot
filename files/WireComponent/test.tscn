@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp3tw80cvfvy5"]
+
+[sub_resource type="GDScript" id="GDScript_cd43g"]
+resource_name = "aaaaaaaaaa"
+script/source = "extends Button
+
+func _ready() -> void:
+	pass
+
+var can_place_wire: bool
+
+func _process(delta: float) -> void:
+	pass
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and can_place_wire == true:
+		#if event.pressed:
+		var wire = Wire_cb.new()
+		wire.grid_size = Vector2(90,90)
+		wire.position = get_global_mouse_position().snapped(wire.grid_size)
+		get_parent().add_child(wire)
+		wire.can_drag = true
+		can_place_wire = false
+	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_place_wire == true:
+		#var wire = Wire_cb.new()
+		#wire.can_drag = false
+		#wire.grid_size = Vector2(90,90)
+		#wire.position = get_global_mouse_position()
+		#get_parent().add_child(wire)
+		#wire.can_drag = true
+		#can_place_wire = false
+
+func _on_pressed() -> void:
+	#var wire = Wire_cb.new()
+	#wire.grid_size = Vector2(90,90)
+	#get_parent().add_child(wire)
+	can_place_wire = true
+"
+
+[sub_resource type="GDScript" id="GDScript_cdetp"]
+resource_name = "aaaasas"
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	var voltage_text := \"\"  # Temporary string to store all voltages
+	for node in get_parent().get_children():
+		if node is Wire_cb:
+			var is_connected := \"false\"
+			if node.connected_wires.size() > 0:
+				is_connected = \"true\"
+
+			voltage_text += \"%.2f\" % node.voltage + \" \" + str(node.name) + \" | is connected: \" + is_connected + \"\\n\"
+
+	self.text = voltage_text  # Update text after loop
+
+
+	self.text = voltage_text  # Update text after loop
+"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_right = 185.0
+offset_bottom = 91.0
+text = "Spawn wire"
+script = SubResource("GDScript_cd43g")
+
+[node name="Label" type="Label" parent="."]
+offset_top = 136.0
+offset_right = 40.0
+offset_bottom = 159.0
+script = SubResource("GDScript_cdetp")
+
+[node name="Label2" type="Label" parent="."]
+offset_top = 108.0
+offset_right = 40.0
+offset_bottom = 131.0
+text = "Voltage values:"
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
