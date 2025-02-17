@@ -8,6 +8,7 @@ Making game features modular helps you to implement new features and makes the p
 - ✅ state_comp (node-based state machine for NPCs)
 - ✅ health_comp (health manager for player characters and NPCs)
 - ✅ drag_comp (makes objects draggable)
+- ✅ and a wire, for some reason (transmits power) [part of another project]
 
 ---
 
