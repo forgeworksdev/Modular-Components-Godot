@@ -19,9 +19,9 @@ const triangle_height_proportion = sqrt(3.0) / 2.0
 			var corners = 2 * corner_radius
 			var fit_x :=  Vector2(value.x, ((value.x - corners) * triangle_height_proportion) + corners)
 			var fit_y := Vector2(((value.y - corners) / triangle_height_proportion) + corners, value.y)
-			
+
 			value = fit_x if is_equal_approx(size.y, value.y) else fit_y
-		
+
 		size.x = clamp(value.x, max(2.0, corner_radius * 2), 10000)
 		size.y = clamp(value.y, max(2.0, corner_radius * 2), 10000)
 		generate_geometry()
@@ -64,7 +64,7 @@ func generate_isoceles() -> PackedVector2Array:
 	var left_circle_center = Vector2(-size.x / 2 + corner_radius, size.y / 2 - corner_radius)
 	var top_circle_center = Vector2(0, -size.y / 2 + corner_radius)
 	var right_circle_center = Vector2(size.x / 2 - corner_radius, size.y / 2 - corner_radius)
-	
+
 	# Left
 	var left_start_angle = 3 * PI / 2
 	var left_end_angle = -left_circle_center.angle_to_point(top_circle_center) + PI / 2
@@ -81,7 +81,7 @@ func generate_right() -> PackedVector2Array:
 	var points: PackedVector2Array = []
 	# Find circles' centers
 	var centers := right_triangle_offsets()
-	
+
 	for i in range(3):
 		var previous = centers[i - 1]
 		var current = centers[i]
@@ -90,7 +90,7 @@ func generate_right() -> PackedVector2Array:
 		var angle_to_previous = -current.angle_to_point(previous) - PI / 2
 		var angle_to_next = -current.angle_to_point(next) + PI / 2
 		points.append_array(arc(angle_to_previous, angle_to_next, current, corner_radius))
-	
+
 	return points
 
 
@@ -127,10 +127,10 @@ func draw_handles(overlay: Control) -> Array:
 	# Starting from top-left, clockwise order.
 	for i in range(8):
 		handles.push_back(SizeHandle.new(self, i))
-	
+
 	# On click, the first handle on the array has priority. Visuals should reflect
 	# that by drawing the first handle on top.
 	for i in range(handles.size() - 1, -1, -1):
 		handles[i].draw(overlay)
-	
+
 	return handles
