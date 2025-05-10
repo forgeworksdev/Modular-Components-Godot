@@ -12,9 +12,8 @@ config_version=5
 
 config/name="Modular components"
 config/description="A bundle of modular components made to work under any node."
-run/main_scene="res://files/world.scn"
 config/features=PackedStringArray("4.4")
-config/icon="uid://d2vf77c8y3akm"
+config/icon="res://Icon.png"
 
 [debug]
 

@@ -1,5 +1,5 @@
-extends state
-class_name state_follow
+extends State
+class_name StateFollow
 
 @export var npc: CharacterBody2D
 

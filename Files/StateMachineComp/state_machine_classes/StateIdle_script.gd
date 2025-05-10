@@ -1,5 +1,5 @@
-extends state
-class_name state_idle
+extends State
+class_name StateIdle
 
 @export var npc: CharacterBody2D
 @export var sprite: AnimatedSprite2D
