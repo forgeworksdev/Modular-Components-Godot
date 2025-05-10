@@ -4,8 +4,6 @@
 These are some modular components for the godot engine. They are made to work under any node.
 Making game features modular helps you to implement new features and makes the pre-existing features easier to debug and edit.
 
-# WARNING: I'm working on re-organizing everything and adding error messages in every component to make everything more stable. There should be a new commit later this month
-
 ### Components:
 - ✅ StateMachineComp (node-based state machine for NPCs)
 - ✅ HealthComp (health manager for player characters and NPCs)
