@@ -1,4 +1,4 @@
-class_name Wire_cb
+class_name Wire
 extends Line2D
 
 #Exports

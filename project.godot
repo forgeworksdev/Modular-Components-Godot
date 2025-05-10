@@ -10,10 +10,15 @@ config_version=5
 
 [application]
 
-config/name="Modular systems"
+config/name="Modular components"
+config/description="A bundle of modular components made to work under any node."
 run/main_scene="res://files/world.scn"
 config/features=PackedStringArray("4.4")
-config/icon="res://files/icon.svg"
+config/icon="uid://d2vf77c8y3akm"
+
+[debug]
+
+gdscript/warnings/unused_parameter=0
 
 [display]
 
@@ -26,7 +31,7 @@ naming/script_name_casing=2
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/2d_shapes/plugin.cfg")
+enabled=PackedStringArray()
 
 [global_group]
 
