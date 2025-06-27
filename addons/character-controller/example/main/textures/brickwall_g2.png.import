@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1r5276b4ull6"
-path="res://.godot/imported/Icon.png-33e63688031d53466d4d656c73cf10ca.ctex"
+uid="uid://vudisi182lfb"
+path="res://.godot/imported/brickwall_g2.png-924f32dc0d9a20f9f0e9298cda91b264.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Icon.png"
-dest_files=["res://.godot/imported/Icon.png-33e63688031d53466d4d656c73cf10ca.ctex"]
+source_file="res://addons/character-controller/example/main/textures/brickwall_g2.png"
+dest_files=["res://.godot/imported/brickwall_g2.png-924f32dc0d9a20f9f0e9298cda91b264.ctex"]
 
 [params]
 

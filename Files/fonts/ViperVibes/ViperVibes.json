@@ -1,0 +1,46 @@
+{
+	"$baseURI": "https://yal.cc/r/20/pixelfont/",
+	"$version": "1.0",
+	"in-glyphs": [
+		"abcdefghijklmn",
+		"opqrstuvwxyz;",
+		"ABCDEFGHIJKLMN?",
+		"OPQRSTUVWXYZ:",
+		"1234567890",
+		"!\"#$%'()*+,./º"
+	],
+	"glyph-color": "white",
+	"in-kerning": [
+		""
+	],
+	"glyph-width": 9,
+	"glyph-height": 10,
+	"glyph-ofs-x": 0,
+	"glyph-ofs-y": 0,
+	"glyph-sep-x": 1,
+	"glyph-sep-y": 1,
+	"glyph-base-x": 0,
+	"glyph-baseline": 6,
+	"glyph-spacing": 1,
+	"font-is-mono": false,
+	"font-em-square": 1024,
+	"font-line-gap": 384,
+	"font-ascend": 768,
+	"font-descend": -512,
+	"font-px-size": 128,
+	"contour-type": "pixel",
+	"font-type": "ttf",
+	"font-name": "ViperVibes",
+	"font-author": "Max9th",
+	"font-copy": "None",
+	"font-version": "Version 2.0",
+	"font-desc": "Just a font tbh.",
+	"font-license": "MIT License",
+	"font-license-url": "",
+	"font-sample-text": "Hello!",
+	"font-preview-text": [
+		"THE QUICK BROWN FOX JUMPS OVER A LAZY DOG.",
+		"the quick brown fox jumps over a lazy dog.",
+		"0123456789"
+	]
+}
