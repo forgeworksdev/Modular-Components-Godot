@@ -1,40 +1,40 @@
 class_name CharacterControler3DComponent extends Node
-#
-#@export_category("Toggles")
-#@export var can_walk: bool = true
-#@export var can_crouch: bool = true
-#@export var can_jump: bool = true
-#@export var can_look: bool = true
-#@export var has_gravity: bool = true
-#
-#@export_category("Properties")
-#var current_speed: float
-#
-#@export_category("Variables")
-#@export var crouch_speed: float = 3.0
-#@export var sprint_speed: float = 10.0
-#@export var walk_speed: float = 6.0
-#@export var deceleration: float = 15.0
-#
-#@export var crouch_height: float = 0.9
-#@export var STAND_HEIGHT: float = 1.6
-#
-#const MOUSE_SENSITIVITY: float = 0.4
-#const LERP_SPEED: float = 5.0
-#
-#var direction: Vector3 = Vector3.ZERO
-#
-## Jump parameters
-#var jump_velocity: float
-#var jump_gravity: float
-#var fall_gravity: float
-#
-#var can_interact: bool = false
-#
-#const JUMP_HEIGHT: float = 2.0
-#const JUMP_PEAK_TIME: float = 0.5
-#const JUMP_FALL_TIME: float = 0.5
-#
+
+@export_subgroup("Toggles")
+@export var can_walk: bool = true
+@export var can_crouch: bool = true
+@export var can_jump: bool = true
+@export var can_look: bool = true
+@export var has_gravity: bool = true
+
+@export_subgroup("Properties")
+var current_speed: float
+
+@export_subgroup("Variables")
+@export var crouch_speed: float = 3.0
+@export var sprint_speed: float = 10.0
+@export var walk_speed: float = 6.0
+@export var deceleration: float = 15.0
+
+@export var crouch_height: float = 0.9
+@export var STAND_HEIGHT: float = 1.6
+
+const MOUSE_SENSITIVITY: float = 0.4
+const LERP_SPEED: float = 5.0
+
+var direction: Vector3 = Vector3.ZERO
+
+# Jump parameters
+var jump_velocity: float
+var jump_gravity: float
+var fall_gravity: float
+
+var can_interact: bool = false
+
+const JUMP_HEIGHT: float = 2.0
+const JUMP_PEAK_TIME: float = 0.5
+const JUMP_FALL_TIME: float = 0.5
+
 #signal can_interact_signal
 #signal cant_interact_signal
 #

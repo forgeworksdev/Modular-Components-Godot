@@ -14,64 +14,69 @@ class_name Drag2DComponent extends Node
 #Vars
 var is_dragging: bool = false
 
-var drag_target: CanvasItem
-
 var target_size: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
-	if target != null:
-		drag_target = target
+	if target == null and get_parent() is CanvasItem:
+		target = get_parent()
+	elif target == null:
+		push_error("Parent is not a CanvasItem, and target was not manually assigned.")
+		return
+
+	if target is Sprite2D:
+		var sprite := target as Sprite2D
+		if sprite.texture:
+			target_size = Vector2(sprite.texture.get_width(), sprite.texture.get_height()) * sprite.scale
+			sprite.centered = false
+		else:
+			push_error("Sprite2D target has no texture.")
+			target_size = Vector2.ZERO
+	elif "size" in target:
+		target_size = target.size
 	else:
-		drag_target = get_parent() if get_parent() is CanvasItem else null
-	if drag_target == null:
-		print("Error: Parent is not/does not extend Node2D (does not have a position value)")
+		push_error("Target does not have a 'size' property.")
+		target_size = Vector2.ZERO
+
 	if interactable_area:
 		interactable_area.connect("input_event", handle_interactions)
-		#interactable_area.connect("mouse_exited", handle_mouse_exited)
-		#interactable_area.connect("input_event", handle_interactions)
 	else:
-		print("Error: No interactable area! Generating one based on parent dimentions!")
-		generate_interactable_area().connect("input_event", handle_interactions)
+		push_warning("Warning: No interactable_area assigned. Generating one.")
+		interactable_area = generate_interactable_area()
+		interactable_area.connect("input_event", handle_interactions)
 
 func generate_interactable_area() -> Area2D:
-	var area: Area2D = Area2D.new()
-	var collision: CollisionShape2D = CollisionShape2D.new()
-	var shape: RectangleShape2D = RectangleShape2D.new()
-	collision.shape = shape
+	var area := Area2D.new()
+	area.name = "GeneratedDragArea"
+	area.position = Vector2.ZERO
 
-	if drag_target is not Sprite2D:
-		target_size = drag_target.size
-		collision.position = get_parent().size/2
-	else:
-		target_size = Vector2(drag_target.texture.get_width(), drag_target.texture.get_height())
-		collision.position = target_size/2
-		drag_target.centered = false
+	var collision := CollisionShape2D.new()
+	var shape := RectangleShape2D.new()
 	shape.size = target_size
+	collision.shape = shape
+	collision.position = target_size * 0.5
+
 	area.add_child(collision)
 	get_parent().add_child.call_deferred(area)
-	print("Success!")
+
+	push_warning("Interactable area generated with size: ", target_size)
 	return area
 
-func _process(delta: float) -> void:
-	pass
-
 func _input(event: InputEvent) -> void:
-	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if event is InputEventMouseButton and !event.pressed and is_dragging:
 		is_dragging = false
+		print("Stopped dragging %s (Drag2DComponent)" % target.name)
 	var mouse_pos: Vector2
 	mouse_pos = get_parent().get_global_mouse_position()
-	if !is_dragging or drag_target == null:
+	if !is_dragging or target == null:
 		return
-	#elif !snap_to_grid:
-		#drag_target.position = mouse_pos + (drag_offset * 1)
 	else:
-
-		drag_target.position = mouse_pos.snapped(grid_size) + drag_offset if !center_drag else mouse_pos.snapped(grid_size) - target_size/2 * drag_target.scale + drag_offset
+		target.position = mouse_pos.snapped(grid_size) + drag_offset if !center_drag else mouse_pos.snapped(grid_size) - target_size/2 * target.scale + drag_offset
 
 func handle_interactions(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			is_dragging = event.pressed
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		is_dragging = true
+		print("Started dragging %s (Drag2DComponent)" % target.name)
 
 func handle_mouse_exited() -> void:
 	is_dragging = false
+	print("Stopped dragging %s (Drag2DComponent)" % target.name)

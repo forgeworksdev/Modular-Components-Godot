@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 12.534803 20"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="Feather.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="11.21762"
+     inkscape:cx="-1.2926093"
+     inkscape:cy="-0.31200913"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-0.0943456,-2.5943456)">
+    <text
+       xml:space="preserve"
+       style="font-size:6.66667px;fill:#8eef97;fill-opacity:1;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       x="12.313103"
+       y="13.205701"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         x="12.313103"
+         y="13.205701" /></text>
+    <path
+       d="m 2.6000193,4.5047858 v 1.0850494 h -3.920434 V 9.1934665 H 2.0060141 V 10.278516 H -1.3204147 V 15.31568 H -4.4567619 V 4.5047858 Z m 8.0547097,0 V 5.5898352 H 6.7818153 V 8.8608236 H 10.036964 V 9.945873 H 6.7818153 v 4.284757 h 4.5302797 v 1.08505 H 3.6454681 V 4.5047858 Z m 6.549897,0 3.009626,10.8108942 H 17.062064 L 16.420539,12.971339 H 13.165391 L 12.476345,15.31568 H 11.248734 L 14.448442,4.5047858 Z M 13.474273,11.88629 h 2.653223 L 14.852365,7.0946483 Z"
+       id="text3"
+       style="font-size:16.2203px;font-family:'Britannic Bold';-inkscape-font-specification:'Britannic Bold, ';fill:#8eef97;stroke-width:2.43305;stroke-linecap:round;stroke-linejoin:round"
+       transform="scale(0.80953495,1.2352771)"
+       aria-label="FEA" />
+  </g>
+</svg>

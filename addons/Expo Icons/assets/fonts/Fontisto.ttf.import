@@ -1,0 +1,41 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://dxocv16sh5rly"
+path="res://.godot/imported/Fontisto.ttf-42622ec063a82b97655513f220ab5332.fontdata"
+
+[deps]
+
+source_file="res://addons/Expo Icons/assets/fonts/Fontisto.ttf"
+dest_files=["res://.godot/imported/Fontisto.ttf-42622ec063a82b97655513f220ab5332.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+modulate_color_glyphs=false
+hinting=1
+subpixel_positioning=1
+keep_rounding_remainders=true
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0),
+"variation_embolden": 0.0
+}]
+language_support={}
+script_support={}
+opentype_features={}

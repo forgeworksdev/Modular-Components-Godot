@@ -81,23 +81,23 @@ func setup_step_bob(step_interval: float):
 func head_bob_process(horizontal_velocity:Vector3, input_axis:Vector2, is_sprint:bool, is_on_floor:bool, _delta:float):
 	if timed_bob_curve:
 		timed_bob_curve.bob_process(_delta)
-	
+
 	var new_position = original_position
 	var new_rotation = original_rotation
 	if step_bob_enabled:
 		var headpos = _do_head_bob(horizontal_velocity.length(), _delta)
 		if is_on_floor:
 			new_position += headpos
-			
+
 	if timed_bob_curve:
 		timed_bob_curve.y -= timed_bob_curve.offset
-		
-	
+
+
 	if is_sprint:
 		input_axis *= 2
 	if rotation_to_move:
-		new_rotation = _head_bob_rotation(input_axis.y, input_axis.x, _delta)	
-	
+		new_rotation = _head_bob_rotation(input_axis.y, input_axis.x, _delta)
+
 	head.position = new_position
 	head.quaternion = new_rotation
 

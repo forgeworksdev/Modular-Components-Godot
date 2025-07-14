@@ -2,13 +2,13 @@ extends MovementAbility3D
 class_name SwimAbility3D
 
 ## swimming ability of [CharacterController3D].
-## 
-## There are three possible states: 
+##
+## There are three possible states:
 ## - Touching water
 ## - floating in water
 ## - Submerged
 ##
-## Note: the [b]actived[/b] and [b]deactived[/b] signals are emitted when it is 
+## Note: the [b]actived[/b] and [b]deactived[/b] signals are emitted when it is
 ## submerged(active) and surfaced(deactived)
 
 ## Emitted when character controller touched water
@@ -50,31 +50,31 @@ func get_speed_modifier() -> float:
 		return on_water_speed_multiplier
 	else:
 		return super.get_speed_modifier()
-		
+
 func set_active(a : bool) -> void:
 	_is_on_water = _raycast.is_colliding()
-	
+
 	if _is_on_water:
 		_depth_on_water = -_raycast.to_local(_raycast.get_collision_point()).y
 	else:
 		_depth_on_water = 2.1
-		
+
 	super.set_active(get_depth_on_water() < submerged_height and _is_on_water and a)
 	_is_floating = get_depth_on_water() < floating_height and _is_on_water and a
-	
+
 	if is_on_water() and !_was_is_on_water:
 		emit_signal("entered_the_water")
 	elif !is_on_water() and _was_is_on_water:
 		emit_signal("exit_the_water")
-		
+
 	if is_floating() and !_was_is_floating:
 		emit_signal("started_floating")
 	elif !is_floating() and _was_is_floating:
 		emit_signal("stopped_floating")
-		
+
 	_was_is_on_water = _is_on_water
 	_was_is_floating = _is_floating
-	
+
 func apply(velocity: Vector3, speed : float, is_on_floor : bool, direction : Vector3, delta: float) -> Vector3:
 	if not is_floating():
 		return velocity

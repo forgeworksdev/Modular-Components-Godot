@@ -96,7 +96,7 @@ func rotate_head(mouse_axis : Vector2) -> void:
 
 
 ## Call to move the character.
-## First it is defined what the direction of movement will be, whether it is vertically or not 
+## First it is defined what the direction of movement will be, whether it is vertically or not
 ## based on whether swim or fly mode is active.
 ## Afterwards, the [b]move()[/b] of the base class [CharacterMovement3D] is called
 ## It is then called functions responsible for head bob if necessary.
@@ -106,7 +106,7 @@ func move(_delta: float, input_axis := Vector2.ZERO, input_jump := false, input_
 	else:
 		_direction_base_node = self
 	super.move(_delta, input_axis, input_jump, input_crouch, input_sprint, input_swim_down, input_swim_up)
-#	TODO Make in exemple this	
+#	TODO Make in exemple this
 #	if not is_fly_mode() and not swim_ability.is_floating() and not swim_ability.is_submerged()
 #		camera.set_fov(lerp(camera.fov, normal_fov, _delta * fov_change_speed))
 	_check_head_bob(_delta, input_axis)

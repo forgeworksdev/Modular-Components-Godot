@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 12.534803 20"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="Ionicons.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="11.21762"
+     inkscape:cx="18.141102"
+     inkscape:cy="4.6801369"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-0.0943456,-2.5943456)">
+    <text
+       xml:space="preserve"
+       style="font-size:6.66667px;fill:#8eef97;fill-opacity:1;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"
+       x="12.313103"
+       y="13.205701"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         x="12.313103"
+         y="13.205701" /></text>
+    <path
+       d="M -1.1398412,4.6047188 V 15.655354 H -4.3457396 V 4.6047188 Z M 5.2962427,4.410422 q 4.8250393,0 4.8250393,5.715566 0,5.715567 -4.9140921,5.715567 -4.91409176,0 -4.91409176,-5.8450979 0,-5.5860351 5.00314456,-5.5860351 z m -0.089053,0.8824316 q -0.9067187,0 -1.2305469,1.0038672 -0.3157324,0.9957715 -0.3157324,3.8292672 0,2.833496 0.3157324,3.837364 0.3238282,0.995771 1.2305469,0.995771 0.9067188,0 1.2224512,-0.995771 0.3238281,-1.003868 0.3238281,-3.837364 0,-2.8254 -0.3238281,-3.8292672 Q 6.1139087,5.2928536 5.2071899,5.2928536 Z M 19.617541,4.6047188 V 15.655354 H 17.164543 L 12.549992,8.6606661 V 15.655354 H 11.473264 V 4.6047188 h 2.032021 L 18.540813,12.15801 V 4.6047188 Z"
+       id="text3"
+       style="font-size:16.58px;font-family:'Britannic Bold';-inkscape-font-specification:'Britannic Bold, ';fill:#8eef97;stroke-width:2.487;stroke-linecap:round;stroke-linejoin:round"
+       transform="scale(0.827489,1.2084753)"
+       aria-label="ION" />
+  </g>
+</svg>
