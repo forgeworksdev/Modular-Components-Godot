@@ -1,19 +1,23 @@
-# Modular Components for Godot Engine games
+<img width="682" height="664" alt="image" src="https://github.com/user-attachments/assets/467f2a21-e460-48b3-8770-271ed1511dee" /># Modular Components for Godot Engine games
 
 ### 🏗️ Description
 These are some modular components for the godot engine. They are made to work under any node.
 Making game features modular helps you to implement new features and makes the pre-existing features easier to debug and edit.
 
 ### Components:
-- ✅ StateMachineComp (node-based state machine for NPCs)
-- ✅ HealthComp (health manager for player characters and NPCs)
+- ✅ BehaviourTreeComponent (node-based state machine for NPCs)
+- ✅ HealthComponent (health manager for player characters and NPCs)
 - ✅ DragComp (makes objects draggable)
-- ✅ ScreenShakeComp (shakes the screen)
+- ✅ ScreenShakeEffectComponent (shakes the screen)
+- ✅ InventoryComponent (manages and stores your items [WIP])
+- ✅ GUIComponent (For your pause screen, inventory screen and UI needs [WIP] [Won't be too extravagant to not take your control {pun intended} away])
+- ✅ CharacterControllerComponent (allows you to control a node like a character [PLANNED!!!])
 - ✅ and a WireComp, for some reason (transmits power) [part of another project]
 
 ---
 
 ### 📷 Screenshots
+<img width="682" height="664" alt="image" src="https://github.com/user-attachments/assets/e2a3080c-cc44-49ec-8d80-a0d41277c46b" />
 
 ---
 
