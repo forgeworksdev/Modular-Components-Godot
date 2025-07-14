@@ -30,12 +30,12 @@ You can run the project by cloning the repo and importing the project into Godot
 
 ### 📥 Cloning the Repository
 ```sh
-git clone https://github.com/Max9th/Modular-Components-Godot.git
+git clone https://github.com/forgeworksdev/Modular-Components-Godot.git
 cd Modular-Components-Godot
 ```
 
 ### 🎮 Running the Project in Godot
-1. Open **Godot v4.4 beta2**;
+1. Open **Godot v4.5 beta1**;
 2. Click **Import** in the top left corner of the Godot project manager;
 3. Select the `project.godot` file in the repository;
 4. Click **Import & Edit**.
@@ -43,7 +43,7 @@ cd Modular-Components-Godot
 ---
 
 ## 🛠️ Technologies Used
-- 🖥️ **Godot v4.4 beta2** (Engine)
+- 🖥️ **Godot v4.5 beta1** (Engine)
 - 🎨 **GDScript only** (Scripting)
 - 📦 **(Any dependencies used, e.g., Godot addons, GDNative, etc.)**
 
