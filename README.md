@@ -7,12 +7,12 @@ Making game features modular helps you to implement new features and makes the p
 ### Components:
 - ✅ BehaviourTreeComponent (node-based state machine for NPCs)
 - ✅ HealthComponent (health manager for player characters and NPCs)
-- ✅ DragComp (makes objects draggable)
+- ✅ Drag2DComponent (makes objects draggable)
 - ✅ ScreenShakeEffectComponent (shakes the screen)
 - ✅ InventoryComponent (manages and stores your items [WIP])
 - ✅ GUIComponent (For your pause screen, inventory screen and UI needs [WIP] [Won't be too extravagant to not take your control {pun intended} away])
 - ✅ CharacterControllerComponent (allows you to control a node like a character [PLANNED!!!])
-- ✅ and a WireComp, for some reason (transmits power) [part of another project]
+- ✅ and a WireComponent, for some reason (transmits power) [part of another project] [Currently deprecated and broken]
 
 ---
 
