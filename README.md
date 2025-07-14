@@ -9,6 +9,7 @@ Making game features modular helps you to implement new features and makes the p
 - ✅ HealthComponent (health manager for player characters and NPCs)
 - ✅ Drag2DComponent (makes objects draggable)
 - ✅ ScreenShakeEffectComponent (shakes the screen)
+- ✅ IDGenerator (Generates sequential IDs)
 - ✅ InventoryComponent (manages and stores your items [WIP])
 - ✅ GUIComponent (For your pause screen, inventory screen and UI needs [WIP] [Won't be too extravagant to not take your control {pun intended} away])
 - ✅ CharacterControllerComponent (allows you to control a node like a character [PLANNED!!!])
