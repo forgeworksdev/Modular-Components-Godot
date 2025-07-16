@@ -4,6 +4,9 @@
 These are some modular components for the godot engine. They are made to work under any node.
 Making game features modular helps you to implement new features and makes the pre-existing features easier to debug and edit.
 
+### ⚠ Warning
+All components are subject to constant updates. This project is a WIP.
+
 ### Components:
 - ✅ BehaviourTreeComponent (node-based state machine for NPCs)
 - ✅ HealthComponent (health manager for player characters and NPCs)
