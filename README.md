@@ -5,7 +5,7 @@ These are some modular components for the godot engine. They are made to work un
 Making game features modular helps you to implement new features and makes the pre-existing features easier to debug and edit.
 
 ### ⚠ Warning
-All components are subject to constant updates. This project is a WIP.
+All components are subject to constant updates, and not all of them are finished. This project is a WIP.
 
 ### Components:
 - ✅ BehaviourTreeComponent (node-based state machine for NPCs)
