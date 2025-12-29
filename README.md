@@ -5,7 +5,7 @@ These are some modular components for the godot engine. They are made to work un
 Making game features modular helps you to implement new features and makes the pre-existing features easier to debug and edit.
 
 ### ⚠ Warning
-All components are subject to constant updates. This project is a WIP.
+All components are subject to constant updates, and not all of them are finished. This project is a WIP.
 
 ### Components:
 - ✅ BehaviourTreeComponent (node-based state machine for NPCs)
@@ -14,9 +14,9 @@ All components are subject to constant updates. This project is a WIP.
 - ✅ ScreenShakeEffectComponent (shakes the screen)
 - ✅ IDGenerator (Generates sequential IDs)
 - ✅ InventoryComponent (manages and stores your items [WIP])
-- ✅ GameControllerComponent (Loads scenes and tracks current scene [WIP])
 - ✅ GUIComponent (For your pause screen, inventory screen and UI needs [WIP] [Won't be too extravagant to not take your control {pun intended} away])
-- ✅ CharacterController (allows you to control a node like a character [WIP, WILL BE BROKEN INTO SMALLER COMPONENTS])
+- ✅ CharacterControllerComponent (allows you to control a node like a character [PLANNED!!!])
+- ✅ and a WireComponent, for some reason (transmits power) [part of another project] [Currently deprecated and broken]
 
 ---
 
@@ -39,7 +39,7 @@ cd Modular-Components-Godot
 ```
 
 ### 🎮 Running the Project in Godot
-1. Open **Godot v4.5 beta6**;
+1. Open **Godot v4.5 beta1**;
 2. Click **Import** in the top left corner of the Godot project manager;
 3. Select the `project.godot` file in the repository;
 4. Click **Import & Edit**.
@@ -47,8 +47,9 @@ cd Modular-Components-Godot
 ---
 
 ## 🛠️ Technologies Used
-- 🖥️ **Godot v4.5 beta6** (Engine)
+- 🖥️ **Godot v4.5 beta1** (Engine)
 - 🎨 **GDScript only** (Scripting)
 - 📦 **(Any dependencies used, e.g., Godot addons, GDNative, etc.)**
 
 ---
+
