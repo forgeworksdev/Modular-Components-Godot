@@ -21,8 +21,9 @@ config/icon="res://Icon.png"
 
 [autoload]
 
-CoreC="*res://Files/Components/CoreComms.gd"
-IDGen="*res://Files/Components/IDGeneratorComp.gd"
+IDGen="*res://Files/components/IDGeneratorComp_script.gd"
+Global="*res://Files/autoloads/Global.gd"
+ItemDB="*res://Files/components/InventoryComponent/ItemDB_script.gd"
 
 [debug]
 
@@ -49,6 +50,7 @@ enabled=PackedStringArray("res://addons/Expo Icons/plugin.cfg", "res://addons/ch
 [global_group]
 
 player=""
+hitbox=""
 
 [gui]
 
