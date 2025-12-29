@@ -15,7 +15,7 @@ All components are subject to constant updates, and not all of them are finished
 - ✅ IDGenerator (Generates sequential IDs)
 - ✅ InventoryComponent (manages and stores your items [WIP])
 - ✅ GUIComponent (For your pause screen, inventory screen and UI needs [WIP] [Won't be too extravagant to not take your control {pun intended} away])
-- ✅ CharacterControllerComponent (allows you to control a node like a character [PLANNED!!!])
+- ✅ CharacterController2D and 2D (allows you to control a node like a character [WIP])
 - ✅ and a WireComponent, for some reason (transmits power) [part of another project] [Currently deprecated and broken]
 
 ---
