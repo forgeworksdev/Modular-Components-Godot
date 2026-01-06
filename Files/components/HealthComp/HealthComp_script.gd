@@ -1,5 +1,4 @@
 ## A modular health component supporting healing, damage, death events, invincibility frames, and heart-based UI.
-@tool
 class_name HealthComponent extends Node
 
 
@@ -11,7 +10,6 @@ var _max_health: int = 100
 	set(value):
 		_max_health = max(1, value)
 		_health = clamp(_health, 0, _max_health)
-		return _max_health
 	get:
 		return _max_health
 
@@ -21,7 +19,6 @@ var _health: int = 100
 @export var health: int:
 	set(value):
 		_health = clamp(value, 0, max_health)
-		return _health
 	get:
 		return _health
 
@@ -39,7 +36,10 @@ var _max_damage: int = 100
 #@export var uses_hearts: bool = false
 
 @export_subgroup("Flags")
-@export var is_alive: bool = true
+@export var is_alive: bool:
+	get():
+		return health > 0
+
 @export var is_invulnerable: bool = false
 
 ## Duration of invincibility (in seconds).
@@ -96,8 +96,7 @@ func apply_damage(amount: int, multiplier: float = 1.0, source: Node = null) -> 
 		i_timer.start()
 		damaged.emit(self, new_amount, source)
 		if health <= 0 and is_alive:
-			is_alive = false
-			death.emit(self, source)
+			apply_death(false, source)
 
 	if health != previous_health:
 		health_changed.emit(self, previous_health, health, max_health)
@@ -106,7 +105,7 @@ func apply_death(override_invulnerability: bool = false, source: Node = null) ->
 	var previous_health: int = health
 	if (!is_invulnerable or override_invulnerability) and is_alive:
 		health = 0
-		is_alive = false
+		#is_alive = false
 		death.emit(self, source)
 
 	if health != previous_health:
@@ -116,7 +115,7 @@ func reset() -> void:
 	var previous_health: int = health
 	health = max_health
 	is_invulnerable = false
-	is_alive = true
+	#is_alive = true
 
 	if health != previous_health:
 		health_changed.emit(self, previous_health, health, max_health)

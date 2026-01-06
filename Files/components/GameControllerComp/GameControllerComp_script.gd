@@ -46,6 +46,6 @@ func change_2d_scene(new_scene_path: String, delete_current: bool = true, keep_r
 			current_2d_scene.hide()
 		else:
 			world_2d.remove_child(current_2d_scene)
-	var new =load(new_scene_path).instantiate()
+	var new = load(new_scene_path).instantiate()
 	world_2d.add_child(new)
 	current_2d_scene = new

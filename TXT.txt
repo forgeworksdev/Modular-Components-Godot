@@ -1,0 +1,123 @@
+class_name GameController extends Node
+
+@export var world_3d: Node3D
+@export var world_2d: Node2D
+@export var gui: Control
+
+@export var sound_player: Array[AudioStreamPlayer] = []
+
+var _current_scenes: Dictionary[WorldType, Node] = {}
+var _is_loading := false
+var _scene_cache: Dictionary[String, PackedScene] = {}
+
+enum WorldType {WORLD3D, WORLD2D, GUI}
+
+signal scene_changed(world_type: WorldType, new_scene: Node)
+
+func change_scene(
+	world_type: WorldType,
+	scene_path: String,
+	delete_current: bool = true
+) -> void:
+	if _is_loading:
+		push_warning("Scene change already in progress")
+		return
+
+	var packed_scene := _get_packed_scene(scene_path)
+	if not packed_scene:
+		push_error("Failed to load scene: %s" % scene_path)
+		return
+
+	var instance := packed_scene.instantiate()
+	_change_scene_internal(world_type, instance, delete_current)
+
+func clear_world(type: WorldType):
+	match type:
+		WorldType.WORLD3D:
+			for child in world_3d.get_children():
+				child.queue_free()
+		WorldType.WORLD2D:
+			for child in world_2d.get_children():
+				child.queue_free()
+		WorldType.GUI:
+			for child in gui.get_children():
+				child.queue_free()
+
+func _change_scene_internal(
+	world_type: WorldType,
+	new_scene: Node,
+	delete_current: bool
+) -> void:
+	var parent := _get_world_parent(world_type)
+	if not parent:
+		return
+
+	_validate_scene_type(world_type, new_scene)
+
+	if delete_current and _current_scenes.has(world_type):
+		_current_scenes[world_type].queue_free()
+
+	parent.add_child(new_scene)
+	_current_scenes[world_type] = new_scene
+
+	#add_player(Global.player_scene_uid)
+
+	scene_changed.emit(world_type, new_scene)
+
+
+func _get_world_parent(world_type: WorldType) -> Node:
+	match world_type:
+		WorldType.WORLD3D: return world_3d
+		WorldType.WORLD2D: return world_2d
+		WorldType.GUI: return gui
+		_:
+			push_error("Invalid WorldType")
+			return null
+
+func _validate_scene_type(world_type: WorldType, scene: Node) -> void:
+	match world_type:
+		WorldType.WORLD3D:
+			assert(scene is Node3D, "Expected Node3D")
+		WorldType.WORLD2D:
+			assert(scene is Node2D, "Expected Node2D")
+		WorldType.GUI:
+			assert(scene is Control, "Expected Control")
+
+
+func _get_packed_scene(path: String) -> PackedScene:
+	if _scene_cache.has(path):
+		return _scene_cache[path]
+
+	var packed := load(path)
+	if packed is PackedScene:
+		_scene_cache[path] = packed
+		return packed
+
+	return null
+
+#func add_player(player_path: String) -> void:
+	#var world = _current_scenes.get(WorldType.WORLD3D)
+	#if not world:
+		#return
+#
+	#if Global.player and is_instance_valid(Global.player):
+		#return
+#
+	#var packed := load(player_path) as PackedScene
+	#if not packed:
+		#push_error("Invalid player scene: %s" % player_path)
+		#return
+#
+	#Global.player = packed.instantiate()
+	#world.add_child(Global.player)
+
+#func clear_world(world_type: WorldType) -> void:
+	#var parent := _get_world_parent(world_type)
+	#if not parent:
+		#return
+#
+	#for child in parent.get_children():
+		#child.queue_free()
+#
+	#_current_scenes.erase(world_type)
+

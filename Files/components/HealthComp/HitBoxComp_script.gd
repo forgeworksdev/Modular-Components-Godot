@@ -1,7 +1,13 @@
 ## Hitbox.gd
 class_name HitboxComponent extends Area2D
 
-@export var enabled: bool = true
+@export var enabled: bool = true:
+	set(value):
+		enabled = value
+		if is_inside_tree():
+			_update_enabled()
+	get:
+		return enabled
 ## Base damage of this hitbox.
 @export var damage: int = 10
 ## Owner of the hitbox, usually the character performing the attack.
@@ -9,15 +15,8 @@ class_name HitboxComponent extends Area2D
 
 func _ready() -> void:
 	add_to_group("hitbox")
-	if enabled:
-		enable()
-	else:
-		disable()
 
-func enable() -> void:
-	monitoring = true
-	monitorable = true
 
-func disable() -> void:
-	monitoring = false
-	monitorable = false
+func _update_enabled() -> void:
+	monitoring = enabled
+	monitorable = enabled
