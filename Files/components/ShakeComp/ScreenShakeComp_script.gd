@@ -14,7 +14,7 @@ class_name ScreenShakeEffectComponent extends Node
 @export var shake_decay_rate: float = 6.0
 
 ## Reference to the Camera2D node that will receive the shake effect.
-@export var camera: Camera2D
+@export var camera: Node2D
 
 ## Internal random number generator used to calculate random shake offsets.
 @onready var rng := RandomNumberGenerator.new()
@@ -26,6 +26,8 @@ func _ready() -> void:
 	rng.randomize()
 
 func apply_shake() -> void:
+	if not enabled:
+		return
 	shake_strength = random_shake_strength
 
 func _process(delta: float) -> void:
@@ -40,7 +42,7 @@ func _process(delta: float) -> void:
 		shake_strength = lerp(shake_strength, 0.0, shake_decay_rate * delta)
 		camera.offset = get_random_offset()
 	else:
-		camera.offset = Vector2.ZERO
+		camera.position = Vector2.ZERO
 
 func get_random_offset() -> Vector2:
 	return Vector2(

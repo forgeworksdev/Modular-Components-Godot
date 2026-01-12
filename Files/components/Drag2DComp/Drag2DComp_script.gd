@@ -16,6 +16,10 @@ var is_dragging: bool = false
 
 var target_size: Vector2 = Vector2.ZERO
 
+signal started_dragging_signal(pos: Vector2)
+signal position_updated_signal(pos: Vector2)
+signal stopped_dragging_signal(pos: Vector2)
+
 func _ready() -> void:
 	if target == null and get_parent() is CanvasItem:
 		target = get_parent()
@@ -58,25 +62,32 @@ func generate_interactable_area() -> Area2D:
 	area.add_child(collision)
 	get_parent().add_child.call_deferred(area)
 
-	push_warning("Interactable area generated with size: ", target_size)
+	push_warning("Drag2DComponent: Interactable area generated with size: ", target_size)
+	print("Drag2DComponent: Interactable area generated with size: ", target_size)
 	return area
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and !event.pressed and is_dragging:
 		is_dragging = false
-		print("Stopped dragging %s (Drag2DComponent)" % target.name)
+		print("Drag2DComponent: Stopped dragging %s " % target.name)
+		stopped_dragging_signal.emit(target.position)
 	var mouse_pos: Vector2
 	mouse_pos = get_parent().get_global_mouse_position()
 	if !is_dragging or target == null:
 		return
 	else:
-		target.position = mouse_pos.snapped(grid_size) + drag_offset if !center_drag else mouse_pos.snapped(grid_size) - target_size/2 * target.scale + drag_offset
+		target.position = mouse_pos.snapped(grid_size) \
+		+ drag_offset if !center_drag else mouse_pos.snapped(grid_size) \
+		- target_size/2 * target.scale + drag_offset
+		position_updated_signal.emit(target.position)
 
 func handle_interactions(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		is_dragging = true
 		print("Started dragging %s (Drag2DComponent)" % target.name)
+		started_dragging_signal.emit(target.position)
 
 func handle_mouse_exited() -> void:
 	is_dragging = false
 	print("Stopped dragging %s (Drag2DComponent)" % target.name)
+
