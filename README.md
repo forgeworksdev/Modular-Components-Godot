@@ -5,18 +5,24 @@ These are some modular components for the godot engine. They are made to work un
 Making game features modular helps you to implement new features and makes the pre-existing features easier to debug and edit.
 
 ### ⚠ Warning
-All components are subject to constant updates, and not all of them are finished. This project is a WIP.
+All components are subject to constant updates, and none are considered usable yet This project is a WIP.
+
+DO NOT USE THIS PROJECT FOR YOUR GAMES YET!!!
 
 ### Components:
-- ✅ BehaviourTreeComponent (node-based state machine for NPCs)
+- ✅ GameControllerComponent (scene manager)
+- ✅ TransitionComponent (Can be used for scene transitions under GameControllerComp, or for transitions in general)
+- ✅ HealthComponent (health manager for player characters and NPCs. Accompanied by comps for hitbox, hurtbox and healbox)
+- ✅ FiniteStateComponent (node-based state machine for NPCs)
 - ✅ HealthComponent (health manager for player characters and NPCs)
-- ✅ Drag2DComponent (makes objects draggable)
+- ✅ Drag2DComp & DragControlComp  (makes objects draggable trough mouse input)
 - ✅ ScreenShakeEffectComponent (shakes the screen)
-- ✅ IDGenerator (Generates sequential IDs)
-- ✅ InventoryComponent (manages and stores your items [WIP])
-- ✅ GUIComponent (For your pause screen, inventory screen and UI needs [WIP] [Won't be too extravagant to not take your control {pun intended} away])
-- ✅ CharacterController2D and 2D (allows you to control a node like a character [WIP])
-- ✅ and a WireComponent, for some reason (transmits power) [part of another project] [Currently deprecated and broken]
+- ✅ IDGenerator (Generates sequential IDs and uuids)
+- ✅ InventoryComponent (manages and stores your items)
+- ✅ GUIComponent (For your pause screen, inventory screen and UI needs)
+
+### Extras:
+- ✅ CharacterController2D & CharacterController3D
 
 ---
 
