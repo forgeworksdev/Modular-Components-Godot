@@ -11,12 +11,12 @@ DO NOT USE THIS PROJECT FOR YOUR GAMES YET!!!
 
 ### Components:
 - ✅ GameControllerComponent (scene manager)
-- ✅ TransitionComponent (Can be used for scene transitions under GameControllerComp, or for transitions in general)
+- ✅ TransitionComponent (can be used for scene transitions under GameControllerComp, or for transitions in general)
 - ✅ HealthComponent (health manager for player characters and NPCs. Accompanied by comps for hitbox, hurtbox and healbox)
 - ✅ FiniteStateComponent (node-based state machine for NPCs)
 - ✅ HealthComponent (health manager for player characters and NPCs)
 - ✅ Drag2DComp & DragControlComp  (makes objects draggable trough mouse input)
-- ✅ ScreenShakeEffectComponent (shakes the screen)
+- ✅ ScreenShakeEffectComponent (customizable screenshake effects)
 - ✅ IDGenerator (Generates sequential IDs and uuids)
 - ✅ InventoryComponent (manages and stores your items)
 - ✅ GUIComponent (For your pause screen, inventory screen and UI needs)
