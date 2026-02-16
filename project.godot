@@ -22,7 +22,7 @@ config/icon="res://Icon.png"
 [autoload]
 
 IDGen="*res://Files/components/IDGeneratorComp_script.gd"
-Global="*res://Files/autoloads/Global.gd"
+Global="*res://Files/globals/Global.gd"
 ItemDB="*res://Files/components/InventoryComponent/ItemDB_script.gd"
 
 [debug]
@@ -46,6 +46,16 @@ version_control/autoload_on_startup=true
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/Expo Icons/plugin.cfg", "res://addons/character-controller/plugin.cfg", "res://addons/godot_pixelorama_importer/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Files/components/": "yellow"
+}
+
+[filesystem]
+
+import/blender/enabled=false
 
 [global_group]
 

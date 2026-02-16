@@ -1,12 +1,14 @@
 ## A modular health component supporting healing, damage, death events, invincibility frames, and heart-based UI.
+@tool
 class_name HealthComponent extends Node
-
 
 @export_subgroup("Properties")
 
+@export var enabled: bool = true
+
 var _max_health: int = 100
-## Maximum health.
-@export var max_health: int:
+## Maximum [member health].
+@export_range(0, 100000, 1) var max_health: int:
 	set(value):
 		_max_health = max(1, value)
 		_health = clamp(_health, 0, _max_health)
@@ -15,7 +17,7 @@ var _max_health: int = 100
 
 
 var _health: int = 100
-##Current health value. Clamped between 0 and max_health.
+##Current health value. Clamped between 0 and [member max_health].
 @export var health: int:
 	set(value):
 		_health = clamp(value, 0, max_health)
@@ -27,48 +29,53 @@ var _max_damage: int = 100
 @export var max_damage: int = 100:
 	set(value):
 		_max_damage = max(value, 0)
-		return _max_damage
 	get:
 		return _max_damage
-
-
-## Enables visual heart-based UI updates.
-#@export var uses_hearts: bool = false
 
 @export_subgroup("Flags")
 @export var is_alive: bool:
 	get():
 		return health > 0
 
-@export var is_invulnerable: bool = false
+## If true, will negate all damage.
+@export var is_invincible: bool = false
 
-## Duration of invincibility (in seconds).
-@export var i_time: float = 0
+## Time of recovery after damage in which invulnerability will be applied (in seconds).
+@export var i_time: float = 0:
+	set(value):
+		i_time = max(value, 0.0)
+		if invincibility_timer:
+			invincibility_timer.wait_time = i_time
 
-## Internal i_timer used for invincibility logic.
-var i_timer: Timer
+## Internal invincibility_timer used for invincibility logic.
+var invincibility_timer: Timer
 
+var _is_invulnerable: bool = false
 
-##Emitted when damage is taken.
+##Fires when damage is taken.
 signal damaged(ref: Node, amount: int, source: Node)
 
 ##Fires when health reaches 0.
 signal death(ref: Node, source: Node)
 
-##Fires when this component is cured.
+##Fires when cured.
 signal cured(ref: Node, amount: int, source: Node)
 
-##Fires when this health is changed.
+##Fires when this health is modified in any way.
 signal health_changed(ref: Node, previous: int, current : int, max: int)
 
 
-func _ready() -> void:
+func _init() -> void:
 	health = clamp(health, 0, max_health)
 
-	if not i_timer:
-		i_timer = create_timer(i_time, true)
+func _ready() -> void:
+	if not invincibility_timer:
+		if i_time > 0:
+			invincibility_timer = _create_timer(i_time, true)
+		else:
+			_is_invulnerable = false
 
-func create_timer(wait_time: float = 1, oneshot: bool = false, timeout_method: Callable = _on_timer_timeout) -> Timer:
+func _create_timer(wait_time: float = 1, oneshot: bool = false, timeout_method: Callable = _on_timer_timeout) -> Timer:
 	var new_timer: Timer = Timer.new()
 	new_timer.one_shot = oneshot
 	new_timer.wait_time = wait_time
@@ -76,36 +83,58 @@ func create_timer(wait_time: float = 1, oneshot: bool = false, timeout_method: C
 	add_child(new_timer)
 	return new_timer
 
-func apply_heal(amount: int, multiplier: float = 1.0, source: Node = null) -> void:
+## Returns true if alive, not invulnerable and not invincible.
+func can_take_damage() -> bool:
+	return enabled and is_alive and not is_invincible and not _is_invulnerable
+
+## Increases health
+func heal(amount: int, multiplier: float = 1.0, source: Node = null) -> void:
+	if !enabled:
+		return
+
+	var new_amount: int = int(amount * multiplier)
 	var previous_health: int = health
-	if is_alive and amount > 0:
-		var new_amount: int = int(amount * multiplier)
+	if new_amount <= 0:
+		return
+
+	if is_alive:
+
 		health = min(health + new_amount, max_health)
 		cured.emit(self, new_amount, source)
 
 	if health != previous_health:
 		health_changed.emit(self, previous_health, health, max_health)
 
-func apply_damage(amount: int, multiplier: float = 1.0, source: Node = null) -> void:
+func damage(amount: int, multiplier: float = 1.0, source: Node = null) -> void:
+	if !enabled:
+		return
+
+	var new_amount: int = int(amount * multiplier)
 	var previous_health: int = health
-	if !is_invulnerable and amount > 0 and is_alive:
-		var new_amount: int = int(amount * multiplier)
+	if new_amount <= 0:
+		return
+
+	if can_take_damage:
 		new_amount = min(new_amount, max_damage)
 		health = max(health - new_amount, 0)
-		is_invulnerable = true
-		i_timer.start()
+		if health <= 0:
+			kill(false, source)
+
+		_is_invulnerable = true
+		if invincibility_timer:
+			invincibility_timer.start()
 		damaged.emit(self, new_amount, source)
-		if health <= 0 and is_alive:
-			apply_death(false, source)
 
 	if health != previous_health:
 		health_changed.emit(self, previous_health, health, max_health)
 
-func apply_death(override_invulnerability: bool = false, source: Node = null) -> void:
+func kill(override_invincibility: bool = false, source: Node = null) -> void:
+	if !enabled:
+		return
+
 	var previous_health: int = health
-	if (!is_invulnerable or override_invulnerability) and is_alive:
+	if (!_is_invulnerable or override_invincibility) and is_alive:
 		health = 0
-		#is_alive = false
 		death.emit(self, source)
 
 	if health != previous_health:
@@ -114,11 +143,10 @@ func apply_death(override_invulnerability: bool = false, source: Node = null) ->
 func reset() -> void:
 	var previous_health: int = health
 	health = max_health
-	is_invulnerable = false
-	#is_alive = true
+	_is_invulnerable = false
 
 	if health != previous_health:
 		health_changed.emit(self, previous_health, health, max_health)
 
 func _on_timer_timeout() -> void:
-	is_invulnerable = false
+	_is_invulnerable = false

@@ -36,7 +36,6 @@ func find_slots(item: InventoryItem) -> Array[int]:
 			result.append(i)
 	return result
 
-
 func add_item(item: InventoryItem, amount: int) -> int:
 	if amount <= 0:
 		return 0
@@ -69,7 +68,6 @@ func add_item(item: InventoryItem, amount: int) -> int:
 		inventory_changed.emit()
 
 	return added
-
 
 func remove_item(item: InventoryItem, amount: int) -> int:
 	if amount <= 0:

@@ -1,4 +1,4 @@
-class_name CharacterControler3DComponent extends Node
+class_name CharacterControler3DComponent extends CharacterBody3D
 
 @export_subgroup("Toggles")
 @export var can_walk: bool = true

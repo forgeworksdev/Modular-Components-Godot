@@ -1,6 +1,8 @@
 ## Hurtbox.gd
 class_name HurtboxComponent extends Area2D
 
+@export var enabled: bool = true
+
 @export var health_component: HealthComponent
 
 @export var damage_multiplier: float = 1.0

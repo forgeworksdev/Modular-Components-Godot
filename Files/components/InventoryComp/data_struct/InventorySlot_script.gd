@@ -18,10 +18,8 @@ func max_stack_size() -> int:
 		return 0
 	return stored_item.stack_size
 
-
 func remaining_space() -> int:
 	return max(0, max_stack_size() - count)
-
 
 func is_full() -> bool:
 	return not is_empty() and count == max_stack_size()

@@ -44,9 +44,9 @@ func _ready() -> void:
 	if interactable_area:
 		interactable_area.connect("input_event", handle_interactions)
 	else:
-		push_warning("Warning: No interactable_area assigned. Generating one!")
-		interactable_area = generate_interactable_area()
-		interactable_area.connect("input_event", handle_interactions)
+		push_warning("Warning: No interactable_area assigned.")
+		#interactable_area = generate_interactable_area()
+		#interactable_area.connect("input_event", handle_interactions)
 
 func generate_interactable_area() -> Area2D:
 	var area := Area2D.new()
@@ -90,4 +90,3 @@ func handle_interactions(viewport: Node, event: InputEvent, shape_idx: int) -> v
 func handle_mouse_exited() -> void:
 	is_dragging = false
 	print("Stopped dragging %s (Drag2DComponent)" % target.name)
-

@@ -10,6 +10,8 @@ class_name HealboxComponent extends Area2D
 		return enabled
 ## Base heal amount of this box.
 @export var heal_amount: int = 10
+## Multiplies [member heal_amount]
+#@export var heal_multiplier: int = 1
 ## Owner of the healbox, usually the character performing the heal.
 @export var owner_node: Node
 
