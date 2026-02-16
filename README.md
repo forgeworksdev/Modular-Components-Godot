@@ -65,5 +65,6 @@ cd Modular-Components-Godot
 - 📦 **TeenyTinyPixls by Chequered Ink Ltd.**
 - 📦 **TeenyTinyPixls by Chequered Ink Ltd.**
 - 📦 **Godot Pixelorama Importer addon (Fork by Daniel Chabrowski, original by Technohacker)**
+- 📦 **Prototype Textures (by Kenney)**
 
 ---
