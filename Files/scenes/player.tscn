@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://wvsmpj8fagkr" path="res://Files/sprites/PuzzlePiece_yellow.pxo" id="1_ei4ej"]
 [ext_resource type="Script" uid="uid://bv8l7aummwb5e" path="res://Files/components/HealthComp/HealthComp_script.gd" id="2_8hsms"]
-[ext_resource type="Script" uid="uid://b7sn77u1too1u" path="res://Files/components/HealthComp/boxes/HurtBoxComp_script.gd" id="3_4ch4t"]
+[ext_resource type="Script" uid="uid://b7sn77u1too1u" path="res://Files/components/HealthComp/boxes/2D/HurtBoxComp_script.gd" id="3_4ch4t"]
 [ext_resource type="Script" uid="uid://bhap5exd2ita8" path="res://Files/components/ShakeComp/ScreenShakeComp_script.gd" id="4_8hsms"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6fmy"]

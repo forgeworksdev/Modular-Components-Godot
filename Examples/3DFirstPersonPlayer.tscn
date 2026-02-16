@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://cf6biec6j417u"]
+
+[ext_resource type="Script" uid="uid://cn2ri2yr3edox" path="res://Files/components/CharacterControlers/CharacterController3D/CharacterController_script.gd" id="1_38swr"]
+[ext_resource type="Script" uid="uid://bv8l7aummwb5e" path="res://Files/components/HealthComp/HealthComp_script.gd" id="2_uxuuo"]
+[ext_resource type="Script" uid="uid://cv1eww71ayixa" path="res://Files/components/HealthComp/boxes/3D/HurtBox3DComp_script.gd" id="3_e6wf5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3wfb6"]
+radius = 0.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_38swr"]
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uxuuo"]
+
+[node name="CharacterController3DComponent" type="CharacterBody3D" node_paths=PackedStringArray("head_pivot", "camera", "standing_collision", "crouching_collision", "ray_cast")]
+script = ExtResource("1_38swr")
+head_pivot = NodePath("HeadPivot")
+camera = NodePath("HeadPivot/Camera3D")
+standing_collision = NodePath("StandingCollision")
+crouching_collision = NodePath("CrouchingCollision")
+ray_cast = NodePath("CrouchRayCast")
+can_move = true
+can_jump = true
+has_gravity = true
+can_crouch = true
+has_movement_vfx = true
+has_headbob = true
+can_interact = true
+can_pickup = true
+fov = 75.0
+crouch_height = 0.0
+metadata/_custom_type_script = "uid://cn2ri2yr3edox"
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_uxuuo")
+metadata/_custom_type_script = "uid://bv8l7aummwb5e"
+
+[node name="Hurtbox3DComponent" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("3_e6wf5")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://cv1eww71ayixa"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox3DComponent"]
+shape = SubResource("SphereShape3D_3wfb6")
+debug_color = Color(0.8642351, 0.00060644746, 0.8664185, 0.41960785)
+
+[node name="CrouchingCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("CapsuleShape3D_38swr")
+debug_color = Color(1, 0, 0.20000029, 1)
+
+[node name="StandingCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_uxuuo")
+debug_color = Color(0, 0.5950001, 0.7, 0.59607846)
+
+[node name="CrouchRayCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 1, 0)
+debug_shape_custom_color = Color(1.853034e-06, 0.5804745, 0.20553306, 1)
+
+[node name="HeadPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="HeadPivot"]

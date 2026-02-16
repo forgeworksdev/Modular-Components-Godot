@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://6i320ejsm5wk"]
+[gd_scene load_steps=7 format=3 uid="uid://6i320ejsm5wk"]
+
+[ext_resource type="PackedScene" uid="uid://cf6biec6j417u" path="res://Examples/3DFirstPersonPlayer.tscn" id="1_gjo7k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gjo7k"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -8,8 +10,11 @@ ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 sky_material = SubResource("ProceduralSkyMaterial_gjo7k")
 
 [sub_resource type="Environment" id="Environment_2ctun"]
-background_mode = 2
+background_color = Color(0.06166126, 0.004935974, 0.11960014, 1)
 sky = SubResource("Sky_gycmv")
+ambient_light_source = 2
+ambient_light_color = Color(0.29035336, 0.29035354, 0.29035345, 1)
+ambient_light_energy = 16.0
 tonemap_mode = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_faqff"]
@@ -20,7 +25,7 @@ size = Vector3(20, 2, 20)
 
 [node name="3dTestScene" type="Node3D"]
 
-[node name="Enviroment" type="Node3D" parent="."]
+[node name="Enviroment" type="Node" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment"]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -42,3 +47,6 @@ skeleton = NodePath("../../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("BoxShape3D_152y1")
+
+[node name="CharacterController3DComponent" parent="." instance=ExtResource("1_gjo7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8162398, 0)

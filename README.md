@@ -26,6 +26,8 @@ DO NOT USE THIS PROJECT FOR YOUR GAMES YET!!!
 - ✅ IDGenerator (Generates sequential IDs and uuids)
 - ✅ InventoryComponent (manages and stores your items)
 - ✅ TimeComponent (tracks time in total minutes, minutes and days)
+- ✅ InteractionComponent (allows for interacting with objects)
+- ✅ ItemCarry3DComponent (allows for picking up items in 3d space)
 - ✅ GUIComponent (For your pause screen, inventory screen and UI needs)
 
 ### Extras:
