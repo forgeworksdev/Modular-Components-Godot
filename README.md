@@ -45,7 +45,7 @@ cd Modular-Components-Godot
 ```
 
 ### 🎮 Running the Project in Godot
-1. Open **Godot v4.5 beta1**;
+1. Open **Godot v4.5.1 stable**;
 2. Click **Import** in the top left corner of the Godot project manager;
 3. Select the `project.godot` file in the repository;
 4. Click **Import & Edit**.
@@ -55,7 +55,7 @@ cd Modular-Components-Godot
 ## 🛠️ Technologies Used
 - 🖥️ **Godot v4.5 beta1** (Engine)
 - 🎨 **GDScript only** (Scripting)
-- 📦 **(Any dependencies used, e.g., Godot addons, GDNative, etc.)**
+- 📦 **Godot Pixelorama importer**
 
 ---
 
