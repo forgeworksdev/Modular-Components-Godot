@@ -2,7 +2,10 @@ class_name InventoryItem extends Resource
 
 @export var name: StringName = &"Icon"
 
-@export var texture: CompressedTexture2D = preload("res://Icon.png")
+## @deprecated: Unused
+@export_file("*.png", "*.jpeg", "*.pxo") var texture_path: String
+
+@export var _texture: CompressedTexture2D = preload("res://Icon.png")
 
 @export_enum(
 	"metais alcalinos",
@@ -21,5 +24,9 @@ class_name InventoryItem extends Resource
 @export_multiline var description: String = "Your project's Icon.png"
 
 @export var stack_size: int = 24
+
+## @deprecated: Items rely on Godot UUIDs
+## A numeric identifier for this item.
+@export var id: int
 
 @export var attributes: Dictionary[String, Variant]

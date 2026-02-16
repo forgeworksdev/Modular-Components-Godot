@@ -3,7 +3,7 @@ extends Resource
 
 @export var stored_item: InventoryItem
 @export var count: int = 0
-@export var metadata: Dictionary = {}
+#@export var metadata: Dictionary = {}
 
 func is_empty() -> bool:
 	return stored_item == null
@@ -11,7 +11,7 @@ func is_empty() -> bool:
 func clear() -> void:
 	stored_item = null
 	count = 0
-	metadata.clear()
+	#metadata.clear()
 
 func max_stack_size() -> int:
 	if stored_item == null:
@@ -24,22 +24,17 @@ func remaining_space() -> int:
 func is_full() -> bool:
 	return not is_empty() and count == max_stack_size()
 
-func insert(new_item: InventoryItem, amount: int) -> int:
+#FIXME Implement item instance
+func insert(new_item: InventoryItem, amount: int) -> void:
 	if amount <= 0:
-		return 0
+		push_error("InventorySlot: Invalid amount!")
 
 	if is_empty():
 		stored_item = new_item
-		count = min(amount, new_item.stack_size)
-		return count
+		count = amount
 
-	if stored_item != new_item:
-		return 0
-
-	var space := remaining_space()
+	var space: int = remaining_space()
 	count += min(space, amount)
-
-	return count
 
 func remove(amount: int) -> void:
 	if amount <= 0 or is_empty():
@@ -47,7 +42,7 @@ func remove(amount: int) -> void:
 
 	count = max(count - amount, 0)
 
-	if count <= 0:
+	if count == 0:
 		clear()
 
 func can_merge(other: InventorySlot) -> bool:
@@ -58,6 +53,7 @@ func can_merge(other: InventorySlot) -> bool:
 	if stored_item != other.stored_item:
 		return false
 	return count < max_stack_size()
+
 
 func merge_from(other: InventorySlot) -> int:
 	if not can_merge(other):
@@ -74,13 +70,13 @@ func merge_from(other: InventorySlot) -> int:
 
 	return absorbed
 
-#func to_dict() -> Dictionary:
-	#return {
-		#"stored_item": stored_item,
-		#"count": count,
+func to_dict() -> Dictionary:
+	return {
+		"stored_item": stored_item,
+		"count": count
 		#"metadata": metadata
-	#}
-#
+	}
+
 #func from_dict(data: Dictionary) -> void:
 	#stored_item = data.get("stored_item", "")
 	#count = data.get("count", 0)

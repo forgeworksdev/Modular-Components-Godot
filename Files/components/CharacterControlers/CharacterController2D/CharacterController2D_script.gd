@@ -86,25 +86,25 @@ func _handle_movement(delta: float) -> void:
 	else:
 		velocity = velocity.lerp(Vector2(target_vel.x, target_vel.y), delta * AIR_ACCEL)
 
-
-func _process_movement_vfx(delta: float) -> void:
-	if not has_movement_vfx:
-		return
-
-	var floor_factor: float = float(is_on_floor())
-	bob_time += delta * velocity.length() * floor_factor
-
-	if velocity.length() > 5.0 and is_on_floor():
-		camera.offset = Vector2(
-			sin(bob_time * BOB_FREQ) * BOB_AMP,
-			cos(bob_time * BOB_FREQ * 0.5) * BOB_AMP
-		)
-	else:
-		camera.offset = Vector2.ZERO
-
-	var speed_ratio: float = clamp(velocity.length() / SPRINT_SPEED, 0.0, 1.0)
-	var target_zoom := zoom_amount + (zoom_increment * speed_ratio)
-	camera.zoom = camera.zoom.lerp(Vector2(target_zoom, target_zoom), delta * 8.0)
+#
+#func _process_movement_vfx(delta: float) -> void:
+	#if not has_movement_vfx:
+		#return
+#
+	#var floor_factor: float = float(is_on_floor())
+	#bob_time += delta * velocity.length() * floor_factor
+#
+	#if velocity.length() > 5.0 and is_on_floor():
+		#camera.offset = Vector2(
+			#sin(bob_time * BOB_FREQ) * BOB_AMP,
+			#cos(bob_time * BOB_FREQ * 0.5) * BOB_AMP
+		#)
+	#else:
+		#camera.offset = Vector2.ZERO
+#
+	#var speed_ratio: float = clamp(velocity.length() / SPRINT_SPEED, 0.0, 1.0)
+	#var target_zoom := zoom_amount + (zoom_increment * speed_ratio)
+	#camera.zoom = camera.zoom.lerp(Vector2(target_zoom, target_zoom), delta * 8.0)
 
 
 func _physics_process(delta: float) -> void:

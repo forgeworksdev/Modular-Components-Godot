@@ -31,7 +31,7 @@ func _connect_signals() -> void:
 	inventory.item_removed.connect(_on_item_removed)
 
 
-func _run_tests():
+func _run_tests() -> void:
 	print("\n--- INVENTORY TEST START ---")
 
 	_test_add_items()

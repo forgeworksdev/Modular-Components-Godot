@@ -6,31 +6,22 @@ class_name HealthComponent extends Node
 
 @export var enabled: bool = true
 
-var _max_health: int = 100
+
 ## Maximum [member health].
 @export_range(0, 100000, 1) var max_health: int:
 	set(value):
-		_max_health = max(1, value)
-		_health = clamp(_health, 0, _max_health)
-	get:
-		return _max_health
+		max_health = max(1, value)
+		health = clamp(health, 0, max_health)
 
-
-var _health: int = 100
 ##Current health value. Clamped between 0 and [member max_health].
 @export var health: int:
 	set(value):
-		_health = clamp(value, 0, max_health)
-	get:
-		return _health
+		health = clamp(value, 0, max_health)
 
-var _max_damage: int = 100
 ##Maximum allowed damage per hit. Further damage is ignored.
 @export var max_damage: int = 100:
 	set(value):
-		_max_damage = max(value, 0)
-	get:
-		return _max_damage
+		max_damage = max(value, 0)
 
 @export_subgroup("Flags")
 @export var is_alive: bool:

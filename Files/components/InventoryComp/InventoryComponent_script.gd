@@ -47,20 +47,22 @@ func add_item(item: InventoryItem, amount: int) -> int:
 			break
 		var slot := Data.slots[i]
 		if slot.stored_item == item and not slot.is_full():
-			var inserted: int = slot.insert(item, remaining)
-			if inserted > 0:
-				remaining -= inserted
-				slot_changed.emit(i)
+			slot.insert(item, remaining) #FIXME insert no longer returns int!!!
+			#var inserted: int = slot.insert(item, remaining)
+			#if inserted > 0:
+				#remaining -= inserted
+				#slot_changed.emit(i)
 
 	for i in Data.slots.size():
 		if remaining <= 0:
 			break
 		var slot := Data.slots[i]
 		if slot.is_empty():
-			var inserted := slot.insert(item, remaining)
-			if inserted > 0:
-				remaining -= inserted
-				slot_changed.emit(i)
+			slot.insert(item, remaining)
+			#var inserted := slot.insert(item, remaining)
+			#if inserted > 0:
+				#remaining -= inserted
+				#slot_changed.emit(i)
 
 	var added := amount - remaining
 	if added > 0:
@@ -83,7 +85,7 @@ func remove_item(item: InventoryItem, amount: int) -> int:
 			var removed: int = min(slot.count, remaining)
 			slot.remove(removed)
 			remaining -= removed
-			slot_changed.emit(i)
+			#slot_changed.emit(i)
 
 	var removed_total := amount - remaining
 	if removed_total > 0:

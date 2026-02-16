@@ -66,7 +66,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		var sensitivity = (mouse_sensitivity / 1000.0)
+		var sensitivity: float = (mouse_sensitivity / 1000.0)
 		head_pivot.rotate_y(-event.relative.x * sensitivity)
 		camera.rotate_x(-event.relative.y * sensitivity)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(min_look_angle), deg_to_rad(max_look_angle))
@@ -131,8 +131,8 @@ func _physics_process(delta: float) -> void:
 		_crouch(delta)
 	if can_move:
 		_handle_movement(delta)
-	if can_interact:
-		pass
+	#if can_interact:
+		#pass
 		#handle_interactions()
 
 	if has_movement_vfx:

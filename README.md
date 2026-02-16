@@ -1,7 +1,12 @@
 # Modular Components for Godot Engine Games
 
 ### 🏗️ Description
-These are some modular components for the godot engine. They are made to work under any node.
+These are some modular components for the godot engine.
+
+This project is based on the principle of:
+- Modularity: Components should be independent and stackable.
+- Flexibility: Components should be customizable and flexible.
+
 Making game features modular helps you to implement new features and makes the pre-existing features easier to debug and edit.
 
 ### ⚠ Warning
@@ -9,16 +14,18 @@ All components are subject to constant updates, and none are considered usable y
 
 DO NOT USE THIS PROJECT FOR YOUR GAMES YET!!!
 
-### Components:
+### Components (Existing and planned):
 - ✅ GameControllerComponent (scene manager)
+- ✅ AudioManager (audio manager)
+- ✅ DialogueComponent (dialogue system)
 - ✅ TransitionComponent (can be used for scene transitions under GameControllerComp, or for transitions in general)
 - ✅ HealthComponent (health manager for player characters and NPCs. Accompanied by comps for hitbox, hurtbox and healbox)
 - ✅ FiniteStateComponent (node-based state machine for NPCs)
-- ✅ HealthComponent (health manager for player characters and NPCs)
-- ✅ Drag2DComp & DragControlComp  (makes objects draggable trough mouse input)
-- ✅ ScreenShakeEffectComponent (customizable screenshake effects)
+- ✅ Drag2DComp & DragGUIComp  (makes objects draggable trough mouse input)
+- ✅ VFXComponent (customizable effects like screenshake)
 - ✅ IDGenerator (Generates sequential IDs and uuids)
 - ✅ InventoryComponent (manages and stores your items)
+- ✅ TimeComponent (tracks time in total minutes, minutes and days)
 - ✅ GUIComponent (For your pause screen, inventory screen and UI needs)
 
 ### Extras:
@@ -45,7 +52,7 @@ cd Modular-Components-Godot
 ```
 
 ### 🎮 Running the Project in Godot
-1. Open **Godot v4.5.1 stable**;
+1. Open **Godot v4.5.1**;
 2. Click **Import** in the top left corner of the Godot project manager;
 3. Select the `project.godot` file in the repository;
 4. Click **Import & Edit**.
@@ -54,9 +61,7 @@ cd Modular-Components-Godot
 
 ## 🛠️ Technologies Used
 - 🖥️ **Godot v4.5 beta1** (Engine)
-- 🎨 **GDScript** (Scripting)
-- 📦 **Godot Pixelorama Importer addon (Fork by Daniel Chabrowski, original by Technohacker)**
-- 📦 **Teeny Tiny Pixls by Chequered Ink Ltd.**
+- 🎨 **GDScript only** (Scripting)
+- 📦 **(Any dependencies used, e.g., Godot addons, GDNative, etc.)**
 
 ---
-

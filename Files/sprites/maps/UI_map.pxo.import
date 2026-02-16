@@ -1,0 +1,14 @@
+[remap]
+
+importer="com.technohacker.pixelorama"
+type="CompressedTexture2D"
+uid="uid://dgpkv7qca12wn"
+path="res://.godot/imported/UI_map.pxo-d5f5c097d672e31e807861053fe234cf.ctex"
+
+[deps]
+
+source_file="res://Files/sprites/maps/UI_map.pxo"
+dest_files=["res://.godot/imported/UI_map.pxo-d5f5c097d672e31e807861053fe234cf.ctex"]
+
+[params]
+

@@ -1,9 +1,11 @@
 ## A reusable component for applying dynamic screen shake to a Camera2D node.
 ## Attach this to any node in your scene and assign a Camera2D to apply camera shake effects.
-@tool
 class_name ScreenShakeEffectComponent extends Node
 
-@export var enabled: bool = false
+@export var enabled: bool = false:
+	set(value):
+		apply_shake()
+		enabled = value
 
 ## The initial intensity of the shake when triggered. Higher values cause stronger shake offsets.
 ## Represents the maximum range (in pixels) the camera can be randomly offset per frame.
@@ -42,7 +44,7 @@ func _process(delta: float) -> void:
 		shake_strength = lerp(shake_strength, 0.0, shake_decay_rate * delta)
 		camera.offset = get_random_offset()
 	else:
-		camera.position = Vector2.ZERO
+		camera.offset = Vector2.ZERO
 
 func get_random_offset() -> Vector2:
 	return Vector2(
