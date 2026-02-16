@@ -54,8 +54,9 @@ cd Modular-Components-Godot
 
 ## 🛠️ Technologies Used
 - 🖥️ **Godot v4.5 beta1** (Engine)
-- 🎨 **GDScript only** (Scripting)
-- 📦 **Godot Pixelorama importer**
+- 🎨 **GDScript** (Scripting)
+- 📦 **Godot Pixelorama Importer addon (Fork by Daniel Chabrowski, original by Technohacker)**
+- 📦 **Teeny Tiny Pixls by Chequered Ink Ltd.**
 
 ---
 
