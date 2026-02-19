@@ -1,5 +1,7 @@
 # Modular Components for Godot Engine Games
 
+<img width="356" height="356" alt="icon" src="https://github.com/user-attachments/assets/e18672fe-86b2-4d2a-baa4-dc0b71c81b73" />
+
 ### 🏗️ Description
 These are some modular components for the godot engine.
 
